@@ -64,9 +64,21 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 ### 安装软件包
 
-在Torque主机上使用以下命令安装libxml2-devel, openssl-devel, and boost-devel软件包
+在Torque主机上使用以下命令安装`libxml2-devel`, `openssl-devel`, `boost-devel`软件包
 
+基于Red Hat 6和Red Hat 7的系统
 
+```bash
+[root]# yum install libtool openssl-devel libxml2-devel boost-devel gcc gcc-c++
+```
+
+基于SUSE 11和SUSE 12的系统
+
+```bash
+[root]# zypper install libopenssl-devel libtool libxml2-devel boost-devel gcc gcc-c++ make gmake
+```
+
+### 安装hwloc
 
 
 
