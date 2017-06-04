@@ -189,5 +189,53 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 [root]# make install
 ```
 
+4.执行配置文件将`/usr/local/bin`和`/usr/local/sbin`添加到您的path中
+
+```
+[root]# . /etc/profile.d/torque.sh
+```
+
+5.执行`torque.setup`脚本初始化`serverdb`
+
+```
+[root]# ./torque.setup root
+```
+
+6.添加节点到`/var/spool/torque/server_priv/nodes`文件中
+
+7.将pbs\_server配置系统自启动，并且启动守护进程。
+
+基于Red Hat 6的系统
+
+```
+[root]# chkconfig --add pbs_server
+[root]# service pbs_server restart
+```
+
+基于Red Hat 7的系统
+
+```
+[root]# qterm
+[root]# systemctl enable pbs_server.service
+[root]# systemctl start pbs_server.service
+```
+
+基于SUSE 11的系统
+
+```
+[root]# chkconfig --add pbs_server
+[root]# service pbs_server restart
+```
+
+基于SUSE 12的系统
+
+```
+[root]# qterm
+[root]# systemctl enable pbs_server.service
+[root]# systemctl start pbs_server.service
+```
+
+### 安装Torque MOMs
+
 
 
