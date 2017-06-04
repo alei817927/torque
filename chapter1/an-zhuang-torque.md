@@ -80,5 +80,43 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 ### 安装hwloc
 
+> 基于Redhat系统使用`yum install hwloc`以及基于SUSE系统使用`zypper install hwloc`，安装的版本一般版本太老。
+
+建议将`cgroups`置为`enable`，需要`hwloc1.9.1`或更高版本，NVIDIA K80需要libhwloc 1.11.0。如果要启用cgroups，检查Torque服务主机是否已经安装所需要的hwloc版本，您可以执行下面的命令检查版本号。
+
+```bash
+[root]# hwloc-info --version
+```
+
+下面的说明是安装版本1.9.1，如果没有安装hwloc或需要升级到所需版本，请执行以下操作：
+
+1. 在Torque服务主机上，每一个Torque MOM主机和Torque客户端主机，做如下操作。
+
+a.下载hwloc-1.9.1.tar.gz。下载地址：[https://www.open-mpi.org/software/hwloc/v1.9](https://www.open-mpi.org/software/hwloc/v1.9)
+
+b.执行下面的命令
+
+基于Red Hat 6或Red Hat 7
+
+```bash
+[root]# yum install gcc make
+[root]# tar -xzvf hwloc-1.9.1.tar.gz
+[root]# cd hwloc-1.9.1
+[root]# ./configure
+[root]# make
+[root]# make install
+```
+
+基于SUSE11或SUSE12
+
+```
+[root]# zypper install gcc make
+[root]# tar -xzvf hwloc-1.9.1.tar.gz
+[root]# cd hwloc-1.9.1
+[root]# ./configure
+[root]# make
+[root]# make install
+```
+
 
 
