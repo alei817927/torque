@@ -25,3 +25,21 @@
 
 软件需求
 
+* libxml2-devel package \(包名称可能不同\)
+* openssl-devel package \(包名称可能不同\)
+* Tcl/Tk .如果您准备构建Torque GUI部分，或者使用基于Tcl的调度器，请使用Tcl/Tk版本8或更高版本。
+* cpusets 和 cgroups
+* cgroups are supported and cpusets are handled by the cgroup cpuset subsystem
+
+* boost version: 1.41 or later
+* libcgroup version: Red Hat-based systems must use libcgroup version 0.40.rc1-16.el6 or later; SUSE-based systems need to use a comparative libcgroup version.
+* libhwloc version: 1.9.1 is the minimum supported, however NVIDIA K80 requires libhwloc 1.11.0. Instructions for installing hwloc are provided as part of the Torque Resource Manager install or upgrade instructions.
+* if you build Torque from source \(i.e. clone from github\), the following additional software is required:
+* gcc
+* gcc-c++
+* posix-compatible version of make
+* libtool 1.5.22 or later
+* boost-devel 1.36.0 or later
+
+
+
