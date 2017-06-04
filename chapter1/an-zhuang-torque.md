@@ -90,11 +90,10 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 下面的说明是安装版本1.9.1，如果没有安装hwloc或需要升级到所需版本，请执行以下操作：
 
-1. 在Torque服务主机上，每一个Torque MOM主机和Torque客户端主机，做如下操作。
+1.在`Torque Server`主机上，每一个`Torque MOM`主机和`Torque客户端`主机，做如下操作。
 
-a.下载hwloc-1.9.1.tar.gz。下载地址：[https://www.open-mpi.org/software/hwloc/v1.9](https://www.open-mpi.org/software/hwloc/v1.9)
-
-b.执行下面的命令
+* 下载`hwloc-1.9.1.tar.gz`。下载地址：[https://www.open-mpi.org/software/hwloc/v1.9](https://www.open-mpi.org/software/hwloc/v1.9)
+* 执行下面的命令
 
 基于Red Hat 6或Red Hat 7
 
@@ -109,7 +108,7 @@ b.执行下面的命令
 
 基于SUSE11或SUSE12
 
-```
+```bash
 [root]# zypper install gcc make
 [root]# tar -xzvf hwloc-1.9.1.tar.gz
 [root]# cd hwloc-1.9.1
@@ -117,6 +116,29 @@ b.执行下面的命令
 [root]# make
 [root]# make install
 ```
+
+2.基于Red Hat 6或Red Hat 7的系统，只在Torque Server主机下执行以下命令
+
+```bash
+[root]# echo /usr/local/lib >/etc/ld.so.conf.d/hwloc.conf
+[root]# ldconfig
+```
+
+3. 基于SUSE11的系统，每一个`Torque MOM`主机和`Torque客户端`主机执行以下命令
+
+```bash
+[root]# echo /usr/local/lib >/etc/ld.so.conf.d/hwloc.conf
+[root]# ldconfig
+```
+
+4. 基于SUSE12的系统，只在`Torque Server`主机上执行以下命令
+
+```bash
+[root]# echo /usr/local/lib >/etc/ld.so.conf.d/hwloc.conf
+[root]# ldconfig
+```
+
+### 安装Torque Server
 
 
 
