@@ -6,3 +6,11 @@
 
 用户使用`qsub`命令向`pbs_server`提交作业，当`pbs_server`收到一个新的作业时，它会通知调度器，当调度程序为作业找到节点时，它会将此作业执行指令和节点列表一起发送到`pbs_server`。然后`pbs_server`将新作业发送到节点列表中的第一个节点，并指示它启动作业。这个节点被指定为执行主机。
 
+## 安装Torque资源管理器
+
+> 如果您使用Moab Workload Manager集成了Torque Resource Manager 6.1.1，您必须使用版本号大于等于8.0的`Moab`，尽管如此，有些特性无法生效，具体参见“Compatibility Requirements”。
+
+
+
+
+

@@ -3,7 +3,7 @@
 * [介绍](README.md)
 * [安装和配置](chapter1.md)
   * [安装Torque](chapter1/an-zhuang-torque.md)
-  * 初始化和配置
+  * [初始化和配置](chapter1/chu-shi-hua-he-pei-zhi.md)
   * 高级配置
   * 手动设置初始化服务器配置
   * 服务节点文件配置
