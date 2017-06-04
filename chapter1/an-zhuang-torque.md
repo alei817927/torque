@@ -106,7 +106,7 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 [root]# make install
 ```
 
-基于SUSE11或SUSE12
+基于SUSE 11或SUSE 12
 
 ```bash
 [root]# zypper install gcc make
@@ -124,14 +124,14 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 [root]# ldconfig
 ```
 
-3. 基于SUSE11的系统，每一个`Torque MOM`主机和`Torque客户端`主机执行以下命令
+3.基于SUSE11的系统，每一个`Torque MOM`主机和`Torque客户端`主机执行以下命令
 
 ```bash
 [root]# echo /usr/local/lib >/etc/ld.so.conf.d/hwloc.conf
 [root]# ldconfig
 ```
 
-4. 基于SUSE12的系统，只在`Torque Server`主机上执行以下命令
+4.基于SUSE12的系统，只在`Torque Server`主机上执行以下命令
 
 ```bash
 [root]# echo /usr/local/lib >/etc/ld.so.conf.d/hwloc.conf
@@ -139,6 +139,55 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 ```
 
 ### 安装Torque Server
+
+> 在安装Torque Server之前，需要完成依赖、软件包和客户端，完成端口的安装。另外如果有防火墙，要把需要的端口打开。
+
+在Torque Server主机上，按照以下步骤操作
+
+1.下载6.1.1版本，可以从Adaptive Computing官网下载构建，也可以通过命令行下载。
+
+* 从github克隆源码（如果没有安装git，请自行安装）。
+
+```bash
+[root]# git clone https://github.com/adaptivecomputing/torque.git -b 6.1.1 6.1.1 
+[root]# cd 6.1.1
+[root]# ./autogen.sh
+```
+
+* 下载源码版压缩包
+
+基于Red Hat 6或Red Hat 7
+
+```bash
+[root]# yum install wget
+[root]# wget http://www.adaptivecomputing.com/download/torque/torque-6.1.1.tar.gz -O torque-6.1.1.tar.gz
+[root]# tar -xzvf torque-6.1.1.tar.gz
+[root]# cd torque-6.1.1/
+```
+
+基于SUSE 11或SUSE 12
+
+```bash
+[root]# zypper install wget
+[root]# wget http://www.adaptivecomputing.com/download/torque/torque-6.1.1.tar.gz -O torque-6.1.1.tar.gz
+[root]# tar -xzvf torque-6.1.1.tar.gz
+[root]# cd torque-6.1.1/
+```
+
+2.根据您的系统配置，您需要添加./configure选项，至少需要添加以下两项。
+
+* ‑‑enable‑cgroups 
+* ‑‑with‑hwloc‑path=/usr/local 
+
+> 当前是假设您已经在使用cgroups，当cgroups已经支持，cpusets就会由cgroup cpuset 子系统来处理。如果没有使用cgroups，请使用`‑‑enable‑cpusets`代替。
+
+3.按照顺序依次执行下面的命令
+
+```bash
+[root]# ./configure --enable-cgroups --with-hwloc-path=/usr/local # add any other specified options
+[root]# make
+[root]# make install
+```
 
 
 
