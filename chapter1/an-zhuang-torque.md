@@ -50,5 +50,23 @@
 >
 > 基于Red Hat 6系统打包为1.4 1.0，基于Red Hat 7的系统打包为1.53.0。如果需要，使用`--with-boost-path=DIR`选项来更改打包的boost版本。参见2.12自定义安装以获得更多信息。
 
-对对对
+## 需要开放的端口
+
+Torque需要开放某些端口用来必要的通信。如果您的主机有防火墙，需要配置防火墙并能开放这些端口。
+
+| 位置 | 端口 | 功能 |
+| :--- | :--- | :--- |
+| Torque Server Host | 15001 | Torque客户端、MOM与Torque Server通信。 |
+| Torque MOM Host \(Compute Nodes\) | 15002 | Torque Server和Torque MOMs通信。 |
+| Torque MOM Host \(Compute Nodes\) | 15003 | Torque MOM和其他Torque MOMs通信 |
+
+## 安装依赖、软件包、客户端
+
+### 安装软件包
+
+在Torque主机上使用以下命令安装libxml2-devel, openssl-devel, and boost-devel软件包
+
+
+
+
 
