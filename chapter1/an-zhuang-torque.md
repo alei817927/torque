@@ -12,7 +12,16 @@
 
 本章节介绍如何安装和开始Torque资源管理器（Torque）
 
-> _针对Cray系统，Adaptive Computing公司建议您在商用硬件上安装`Moab`和`Torque Servers`（head nodes），不包括Cray compute/service/login节点。但是您必须在登录和“mom”服务节点上安装Torque pbsmom守护进程和Torque客户端命令。因为`pbs_mom`必须在Cray系统中的Cray服务节点上运行，以便能够访问`Cray ALPS`子系统。_
+> _针对Cray系统，Adaptive Computing公司建议您在商用硬件上安装_`Moab`_和_`Torque Servers`_（head nodes），不包括Cray compute/service/login节点。但是您必须在登录和“mom”服务节点上安装Torque pbsmom守护进程和Torque客户端命令。因为_`pbs_mom`_必须在Cray系统中的Cray服务节点上运行，以便能够访问_`Cray ALPS`_子系统。_
 
+### 系统和软件需求
 
+支持的操作系统
+
+* CentOS 6.x, 7.x 
+* RHEL 6.x, 7.x 
+* Scientific Linux 6.x, 7.x 
+* SUSE Linux Enterprise Server 11, 12, 12-SP1
+
+软件需求
 
