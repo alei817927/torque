@@ -36,18 +36,19 @@
 >
 > * boost version: 1.41 或更高版本
 >
-> * libcgroup version: Red Hat-based systems must use libcgroup version 0.40.rc1-16.el6 or later; SUSE-based systems need to use a comparative libcgroup version.
-> * libhwloc version: 1.9.1 is the minimum supported, however NVIDIA K80 requires libhwloc 1.11.0. Instructions for installing hwloc are provided as part of the Torque Resource Manager install or upgrade instructions.
+> * libcgroup: 基于Red Hat系统必须使用`libcgroup 0.40.rc1-16.el6`或更高版本，基于SUSE系统需要使用`comparative libcgroup`版本。
+>
+> * libhwloc: 最低版本是1.9.1，但是NVIDIA K80需要`libhwloc 1.11.0`。
 
-* if you build Torque from source \(i.e. clone from github\), the following additional software is required:
+* 如果您是源码安装（比如从`github`克隆出来），需要下面额外的环境。
 
 > * gcc
 > * gcc-c++
 > * posix-compatible version of make
 > * libtool 1.5.22 或更高版本
 > * boost-devel 1.36.0 或更高版本
+>
+> 基于Red Hat 6系统打包为1.4 1.0，基于Red Hat 7的系统打包为1.53.0。如果需要，使用`--with-boost-path=DIR`选项来更改打包的boost版本。参见2.12自定义安装以获得更多信息。
 
 对对对
-
-
 
