@@ -1,6 +1,16 @@
-# First Chapter
+本章将介绍如何安装和配置Torque。
 
-# First Chapter
+安装Torque
 
-GitBook allows you to organize your book into chapters, each chapter is stored in a separate file like this one.
+初始化和配置
+
+高级配置
+
+手动设置初始化服务器配置
+
+服务节点文件配置
+
+测试服务器配置
+
+NUMA系统配置
 
