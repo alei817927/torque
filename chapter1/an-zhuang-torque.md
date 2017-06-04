@@ -10,7 +10,9 @@
 
 > 如果您使用Moab Workload Manager集成了Torque Resource Manager 6.1.1，您必须使用版本号大于等于8.0的`Moab`，尽管如此，有些特性无法生效，具体参见“Compatibility Requirements”。
 
+本章节介绍如何安装和开始Torque资源管理器（Torque）
 
+> _针对Cray系统，Adaptive Computing公司建议您在商用硬件上安装`Moab`和`Torque Servers`（head nodes），不包括Cray compute/service/login节点。但是您必须在登录和“mom”服务节点上安装Torque pbsmom守护进程和Torque客户端命令。因为`pbs_mom`必须在Cray系统中的Cray服务节点上运行，以便能够访问`Cray ALPS`子系统。_
 
 
 
