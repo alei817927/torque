@@ -243,3 +243,69 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 a.创建自解压安装包
 
+```bash
+[root]# make packages
+Building ./torque-package-clients-linux-x86_64.sh ...
+Building ./torque-package-mom-linux-x86_64.sh ...
+Building ./torque-package-server-linux-x86_64.sh ...
+Building ./torque-package-gui-linux-x86_64.sh ...
+Building ./torque-package-devel-linux-x86_64.sh ...
+Done.
+
+The package files are self-extracting packages that can be copied and executed on your production machines.  Use --help for options.
+```
+
+b.拷贝自解压MOM安装包到每个MOM主机，Adaptive Computing建议您直接执行远程脚本，比如使用SSH远程安装，您可以使用共享key的方式操作，可以避免输入密码。
+
+```bash
+[root]# scp torque-package-mom-linux-x86_64.sh <mom-node>:
+```
+
+c.拷贝pbs\_mom启动脚本到Torque MOM主机
+
+Red Hat 6
+
+```bash
+[root]# scp contrib/init.d/pbs_mom <mom-node>:/etc/init.d
+```
+
+Red Hat 7
+
+```bash
+[root]# scp contrib/systemd/pbs_mom.service <mom-node>:/usr/lib/systemd/system/
+```
+
+SUSE 11
+
+```bash
+[root]# scp contrib/init.d/suse.pbs_mom <mom-node>:/etc/init.d/pbs_mom
+```
+
+SUSE 12
+
+```bash
+[root]# scp contrib/systemd/pbs_mom.service <mom-node>:/usr/lib/systemd/system/
+```
+
+2.针对Red Hat 6或SUSE 11，确认每个Torque MOM主机安装了cgroups，如果没有安装，请安装。
+
+a.运行[lssubsys -am](http://linux.die.net/man/1/lssubsys)
+
+b.如果无此命令或者看不到类似的东西，说明cgroups没有安装，请执行以下操作
+
+```bash
+ns
+perf_event
+net_prio
+cpuset /cgroup/cpuset
+cpu /cgroup/cpu
+cpuacct /cgroup/cpuacct
+memory /cgroup/memory
+devices /cgroup/devices
+freezer /cgroup/freezer
+net_cls /cgroup/net_cls
+blkio /cgroup/blkio
+```
+
+
+
