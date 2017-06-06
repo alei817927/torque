@@ -10,7 +10,7 @@
   * [初始化和配置](chapter1/chu-shi-hua-he-pei-zhi.md)
     * [指定计算节点](chapter1/chu-shi-hua-he-pei-zhi/zhi-ding-ji-suan-jie-dian.md)
     * [在计算节点上配置Torque](chapter1/chu-shi-hua-he-pei-zhi/zai-ji-suan-jie-dian-shang-pei-zhi-torque.md)
-    * 配置端口
+    * [配置端口](chapter1/chu-shi-hua-he-pei-zhi/pei-zhi-duan-kou.md)
     * 配置trqauthd
     * 完成配置
   * 高级配置
