@@ -8,8 +8,8 @@
     * [计算节点](chapter1/an-zhuang-torque/ji-suan-jie-dian.md)
     * [启用Torque服务](chapter1/an-zhuang-torque/qi-yong-torque-fu-wu.md)
   * [初始化和配置](chapter1/chu-shi-hua-he-pei-zhi.md)
-    * 指定计算节点
-    * 在计算节点上配置Torque
+    * [指定计算节点](chapter1/chu-shi-hua-he-pei-zhi/zhi-ding-ji-suan-jie-dian.md)
+    * [在计算节点上配置Torque](chapter1/chu-shi-hua-he-pei-zhi/zai-ji-suan-jie-dian-shang-pei-zhi-torque.md)
     * 配置端口
     * 配置trqauthd
     * 完成配置

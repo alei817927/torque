@@ -1,4 +1,4 @@
-2.4 启用Torque服务
+## 2.4 启用Torque服务
 
 > 启用Torque服务是可选的，为了能够让Torque成为服务，您需要启用trqauthd。
 
