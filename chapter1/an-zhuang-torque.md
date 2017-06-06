@@ -396,5 +396,51 @@ SUSE 12
 [root]# systemctl start pbs_mom.service
 ```
 
+### 安装Torque客户端
 
+如果您希望在其他主机上安装Torque客户端（比如计算节点和独立登录节点），请执行以下操作
+
+1.在Torque Server主机上做以下操作
+
+a.将自解压客户端安装包拷贝到Torque Client主机上
+
+```
+[root]# scp torque-package-clients-linux-x86_64.sh <torque-client-host>:
+```
+
+b.拷贝trqauthd启动脚本到每个客户端主机
+
+Red Hat 6
+
+```
+[root]# scp contrib/init.d/trqauthd <torque-client-host>:/etc/init.d
+```
+
+Red Hat 7
+
+```
+[root]# scp contrib/systemd/trqauthd.service <torque-client-host>:/usr/lib/systemd/system/
+```
+
+SUSE 11
+
+```
+[root]# scp contrib/init.d/suse.trqauthd <torque-client-host>:/etc/init.d/trqauthd
+```
+
+SUSE 12
+
+```
+[root]# scp contrib/systemd/trqauthd.service <torque-client-host>:/usr/lib/systemd/system/
+```
+
+c.在Torque Client主机上安装自解压客户端包
+
+```
+[root]# ./torque-package-clients-linux-x86_64.sh --install
+```
+
+### 配置数据管理
+
+当批处理作业完成时，stdout和stderr文件会生成到Torque Server master主机上的spool目录，而不会生成在提交主机上。您可以修改环境配置，将stdout和stederr文件写回提交主机上。
 
