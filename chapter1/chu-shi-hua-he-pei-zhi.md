@@ -82,5 +82,26 @@ set server keep_completed = 300
 > pbs_server -t create
 ```
 
+使用`qmgr`来查看配置内容和验证配置是否正确：
+
+```
+> qmgr -c 'p s'
+ 
+#
+# Set server attributes.
+#
+set server acl_hosts = kmn
+set server log_events = 511
+set server mail_from = adm
+set server node_check_rate = 150
+set server tcp_timeout = 6
+```
+
+### 2.5.3 为pbs\_server和pbs\_mom设置环境
+
+`pbs_environment`文件\(默认位置`TORQUE_HOME/pbs_environment`\)将在启动时由`pbs_mom`和`pbs_server`执行。如果需要设置`pbs_server`和`pbs_mom`环境变量参数，可以替换此文件内容。另外可以在编译之前使用`--with-environ=PATH`参数来指定配置文件，运行`pbs_server --about`命令可查看是否指定配置文件。
+
+> 请不要将`pbs_environment`文件和作业的环境变量`PBS_ENVIRONMENT`混淆。
+
 
 
