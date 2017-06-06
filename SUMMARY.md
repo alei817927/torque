@@ -6,6 +6,7 @@
     * [Torque体系结构](chapter1/an-zhuang-torque/torqueti-xi-jie-gou.md)
     * [安装Torque资源管理器](chapter1/an-zhuang-torque/an-zhuang-torque-zi-yuan-guan-li-qi.md)
     * [计算节点](chapter1/an-zhuang-torque/ji-suan-jie-dian.md)
+    * [启用Torque服务](chapter1/an-zhuang-torque/qi-yong-torque-fu-wu.md)
   * [初始化和配置](chapter1/chu-shi-hua-he-pei-zhi.md)
   * 高级配置
   * 手动设置初始化服务器配置
