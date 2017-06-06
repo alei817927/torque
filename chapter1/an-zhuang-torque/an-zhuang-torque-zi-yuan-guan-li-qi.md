@@ -1,6 +1,4 @@
-## 
-
-## 安装Torque资源管理器
+## 2.2 安装Torque资源管理器
 
 > 如果您使用Moab Workload Manager集成了Torque Resource Manager 6.1.1，您必须使用版本号大于等于8.0的`Moab`，尽管如此，有些特性无法生效，具体参见“Compatibility Requirements”。
 
@@ -12,9 +10,9 @@
 
 支持的操作系统
 
-* CentOS 6.x, 7.x 
-* RHEL 6.x, 7.x 
-* Scientific Linux 6.x, 7.x 
+* CentOS 6.x, 7.x
+* RHEL 6.x, 7.x
+* Scientific Linux 6.x, 7.x
 * SUSE Linux Enterprise Server 11, 12, 12-SP1
 
 软件需求
@@ -34,7 +32,9 @@
 >
 > * libhwloc: 最低版本是1.9.1，但是NVIDIA K80需要`libhwloc 1.11.0`。
 
-* 如果您是源码安装（比如从`github`克隆出来），需要下面额外的环境。
+* 如果您是源码安装（比如从
+  `github`
+  克隆出来），需要下面额外的环境。
 
 > * gcc
 > * gcc-c++
@@ -58,17 +58,17 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 ### 安装软件包
 
-在Torque主机上使用以下命令安装`libxml2-devel`, `openssl-devel`, `boost-devel`软件包
+在Torque主机上使用以下命令安装`libxml2-devel`,`openssl-devel`,`boost-devel`软件包
 
 基于Red Hat 6和Red Hat 7的系统
 
-```bash
+```
 [root]# yum install libtool openssl-devel libxml2-devel boost-devel gcc gcc-c++
 ```
 
 基于SUSE 11和SUSE 12的系统
 
-```bash
+```
 [root]# zypper install libopenssl-devel libtool libxml2-devel boost-devel gcc gcc-c++ make gmake
 ```
 
@@ -78,7 +78,7 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 建议将`cgroups`置为`enable`，需要`hwloc1.9.1`或更高版本，NVIDIA K80需要libhwloc 1.11.0。如果要启用cgroups，检查Torque服务主机是否已经安装所需要的hwloc版本，您可以执行下面的命令检查版本号。
 
-```bash
+```
 [root]# hwloc-info --version
 ```
 
@@ -86,12 +86,15 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 1.在`Torque Server`主机上，每一个`Torque MOM`主机和`Torque客户端`主机，做如下操作。
 
-* 下载`hwloc-1.9.1.tar.gz`。下载地址：[https://www.open-mpi.org/software/hwloc/v1.9](https://www.open-mpi.org/software/hwloc/v1.9)
+* 下载
+  `hwloc-1.9.1.tar.gz`
+  。下载地址：
+  [https://www.open-mpi.org/software/hwloc/v1.9](#)
 * 执行下面的命令
 
 基于Red Hat 6或Red Hat 7
 
-```bash
+```
 [root]# yum install gcc make
 [root]# tar -xzvf hwloc-1.9.1.tar.gz
 [root]# cd hwloc-1.9.1
@@ -102,7 +105,7 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 基于SUSE 11或SUSE 12
 
-```bash
+```
 [root]# zypper install gcc make
 [root]# tar -xzvf hwloc-1.9.1.tar.gz
 [root]# cd hwloc-1.9.1
@@ -113,21 +116,23 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 2.基于Red Hat 6或Red Hat 7的系统，只在Torque Server主机下执行以下命令
 
-```bash
-[root]# echo /usr/local/lib >/etc/ld.so.conf.d/hwloc.conf
+```
+[root]# echo /usr/local/lib 
+>
+/etc/ld.so.conf.d/hwloc.conf
 [root]# ldconfig
 ```
 
 3.基于SUSE11的系统，每一个`Torque MOM`主机和`Torque客户端`主机执行以下命令
 
-```bash
+```
 [root]# echo /usr/local/lib >/etc/ld.so.conf.d/hwloc.conf
 [root]# ldconfig
 ```
 
 4.基于SUSE12的系统，只在`Torque Server`主机上执行以下命令
 
-```bash
+```
 [root]# echo /usr/local/lib >/etc/ld.so.conf.d/hwloc.conf
 [root]# ldconfig
 ```
@@ -142,7 +147,7 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 * 从github克隆源码（如果没有安装git，请自行安装）。
 
-```bash
+```
 [root]# git clone https://github.com/adaptivecomputing/torque.git -b 6.1.1 6.1.1 
 [root]# cd 6.1.1
 [root]# ./autogen.sh
@@ -152,7 +157,7 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 基于Red Hat 6或Red Hat 7
 
-```bash
+```
 [root]# yum install wget
 [root]# wget http://www.adaptivecomputing.com/download/torque/torque-6.1.1.tar.gz -O torque-6.1.1.tar.gz
 [root]# tar -xzvf torque-6.1.1.tar.gz
@@ -161,7 +166,7 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 基于SUSE 11或SUSE 12
 
-```bash
+```
 [root]# zypper install wget
 [root]# wget http://www.adaptivecomputing.com/download/torque/torque-6.1.1.tar.gz -O torque-6.1.1.tar.gz
 [root]# tar -xzvf torque-6.1.1.tar.gz
@@ -170,14 +175,14 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 2.根据您的系统配置，您需要添加./configure选项，至少需要添加以下两项。
 
-* ‑‑enable‑cgroups 
-* ‑‑with‑hwloc‑path=/usr/local 
+* ‑‑enable‑cgroups
+* ‑‑with‑hwloc‑path=/usr/local
 
 > 当前是假设您已经在使用cgroups，当cgroups已经支持，cpusets就会由cgroup cpuset 子系统来处理。如果没有使用cgroups，请使用`‑‑enable‑cpusets`代替。
 
 3.按照顺序依次执行下面的命令
 
-```bash
+```
 [root]# ./configure --enable-cgroups --with-hwloc-path=/usr/local # add any other specified options
 [root]# make
 [root]# make install
@@ -237,7 +242,7 @@ Torque需要开放某些端口用来必要的通信。如果您的主机有防�
 
 a.创建自解压安装包
 
-```bash
+```
 [root]# make packages
 Building ./torque-package-clients-linux-x86_64.sh ...
 Building ./torque-package-mom-linux-x86_64.sh ...
@@ -246,12 +251,13 @@ Building ./torque-package-gui-linux-x86_64.sh ...
 Building ./torque-package-devel-linux-x86_64.sh ...
 Done.
 
+
 The package files are self-extracting packages that can be copied and executed on your production machines.  Use --help for options.
 ```
 
 b.拷贝自解压MOM安装包到每个MOM主机，Adaptive Computing建议您直接执行远程脚本，比如使用SSH远程安装，您可以使用共享key的方式操作，可以避免输入密码。
 
-```bash
+```
 [root]# scp torque-package-mom-linux-x86_64.sh <mom-node>:
 ```
 
@@ -259,35 +265,35 @@ c.拷贝pbs\_mom启动脚本到Torque MOM主机
 
 Red Hat 6
 
-```bash
+```
 [root]# scp contrib/init.d/pbs_mom <mom-node>:/etc/init.d
 ```
 
 Red Hat 7
 
-```bash
+```
 [root]# scp contrib/systemd/pbs_mom.service <mom-node>:/usr/lib/systemd/system/
 ```
 
 SUSE 11
 
-```bash
+```
 [root]# scp contrib/init.d/suse.pbs_mom <mom-node>:/etc/init.d/pbs_mom
 ```
 
 SUSE 12
 
-```bash
+```
 [root]# scp contrib/systemd/pbs_mom.service <mom-node>:/usr/lib/systemd/system/
 ```
 
 2.针对Red Hat 6或SUSE 11，确认每个Torque MOM主机安装了cgroups，如果没有挂载，请挂载。
 
-a.运行[lssubsys -am](http://linux.die.net/man/1/lssubsys)
+a.运行[lssubsys -am](#)
 
 b.如果无此命令或者看不到下面类似的内容，说明cgroups没有挂载，请继续后续操作
 
-```bash
+```
 ns
 perf_event
 net_prio
@@ -297,7 +303,8 @@ cpuacct /cgroup/cpuacct
 memory /cgroup/memory
 devices /cgroup/devices
 freezer /cgroup/freezer
-net_cls /cgroup/net_cls
+net_cls /cgroup
+et_cls
 blkio /cgroup/blkio
 ```
 
@@ -317,7 +324,9 @@ d.针对SUSE 11，请做如下操作
 [root]# zypper install libcgroup1
 ```
 
-* 在配置文件`/etc/cgconfig.conf`添加以下内容
+* 在配置文件
+  `/etc/cgconfig.conf`
+  添加以下内容
 
 ```
 mount {
@@ -336,7 +345,7 @@ mount {
 [root]# chkconfig cgconfig on
 ```
 
-e.再次运行[lssubsys -am](http://linux.die.net/man/1/lssubsys)确认cgroups已挂载
+e.再次运行[lssubsys -am](#)确认cgroups已挂载
 
 3.针对每个Torque MOM做如下操作
 
