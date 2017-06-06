@@ -287,11 +287,11 @@ SUSE 12
 [root]# scp contrib/systemd/pbs_mom.service <mom-node>:/usr/lib/systemd/system/
 ```
 
-2.针对Red Hat 6或SUSE 11，确认每个Torque MOM主机安装了cgroups，如果没有安装，请安装。
+2.针对Red Hat 6或SUSE 11，确认每个Torque MOM主机安装了cgroups，如果没有挂载，请挂载。
 
 a.运行[lssubsys -am](http://linux.die.net/man/1/lssubsys)
 
-b.如果无此命令或者看不到类似的东西，说明cgroups没有安装，请执行以下操作
+b.如果无此命令或者看不到下面类似的内容，说明cgroups没有挂载，请继续后续操作
 
 ```bash
 ns
@@ -305,6 +305,95 @@ devices /cgroup/devices
 freezer /cgroup/freezer
 net_cls /cgroup/net_cls
 blkio /cgroup/blkio
+```
+
+c.对于Red Hat 6，安装cgroup库，挂载cgroups
+
+```
+[root]# yum install libcgroup
+[root]# service cgconfig start
+[root]# chkconfig cgconfig on
+```
+
+d.针对SUSE 11，请做如下操作
+
+* 安装cgroup库
+
+```
+[root]# zypper install libcgroup1
+```
+
+* 在配置文件`/etc/cgconfig.conf`添加以下内容
+
+```
+mount {
+        devices = /mnt/cgroups/devices;
+        cpuset = /mnt/cgroups/cpuset;
+        cpu = /mnt/cgroups/cpu;
+        cpuacct = /mnt/cgroups/cpuacct;
+        memory = /mnt/cgroups/memory;
+}
+```
+
+* 挂载cgroups
+
+```
+[root]# service cgconfig start
+[root]# chkconfig cgconfig on
+```
+
+e.再次运行[lssubsys -am](http://linux.die.net/man/1/lssubsys)确认cgroups已挂载
+
+3.针对每个Torque MOM做如下操作
+
+a.在Red Hat 7或SUSE 12下安装cgroup-tools
+
+Red Had 7
+
+```
+[root]# yum install libcgroup-tools
+```
+
+SUSE 12
+
+```
+[root]# zypper install libcgroup-tools
+```
+
+b.安装自解压MOM包
+
+```
+[root]# ./torque-package-mom-linux-x86_64.sh --install
+```
+
+c.配置pbs\_mom为系统自启动，作为守护进程启动。
+
+Red Hat 6
+
+```
+[root]# chkconfig --add pbs_mom
+[root]# service pbs_mom start
+```
+
+Red Hat 7
+
+```
+[root]# systemctl enable pbs_mom.service
+[root]# systemctl start pbs_mom.service
+```
+
+SUSE 11
+
+```
+[root]# chkconfig --add pbs_mom
+[root]# service pbs_mom start
+```
+
+SUSE 12
+
+```
+[root]# systemctl enable pbs_mom.service
+[root]# systemctl start pbs_mom.service
 ```
 
 
